@@ -1,20 +1,27 @@
+# Archivo: tracing-server.yml
+
 server:
   port: 9411
 
 ---
+
 spring:
   profiles: default
 eureka:
   instance:
-    # enable to register multiple app instances with a random server port
+    # Para registrar múltiples instancias con un puerto de servidor aleatorio (solo si es necesario)
     instance-id: ${spring.application.name}:${random.uuid}
 
 ---
+
 spring:
   config:
     activate:
       on-profile: docker
+  # Configuración de Eureka para el perfil docker
 eureka:
+  instance:
+    hostname: tracing-server  # Nombre del servicio en Kubernetes
   client:
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/

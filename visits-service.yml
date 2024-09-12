@@ -1,11 +1,15 @@
-﻿spring:
+spring:
   config:
     activate:
       on-profile: default
 eureka:
   instance:
-    # enable to register multiple app instances with a random server port
     instance-id: ${spring.application.name}:${random.uuid}
+    preferIpAddress: false  # Usar nombres DNS en lugar de IPs
+    hostname: visits-service  # Nombre del servicio en Kubernetes
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
 
 ---
 spring:
@@ -17,6 +21,9 @@ spring:
 server:
   port: 8082
 eureka:
+  instance:
+    preferIpAddress: false
+    hostname: visits-service  # Nombre del servicio en Kubernetes
   client:
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/

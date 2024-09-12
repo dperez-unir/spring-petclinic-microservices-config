@@ -1,29 +1,31 @@
 spring:
-  application:
-    name: customers-service
   config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+    activate:
+      on-profile: default
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+    preferIpAddress: false  # Preferir nombres en lugar de IPs
+    hostname: customers-service  # Nombre del servicio en Kubernetes
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
 
 ---
 spring:
   config:
     activate:
       on-profile: docker
-    import: configserver:http://config-server:8888
-
   application:
-    name: customers-service
-
+      name: customers-service
   zipkin:
     baseUrl: http://tracing-server:9411
-
 server:
   port: 8081
-
 eureka:
   instance:
     preferIpAddress: false
-    hostname: customers-service # Nombre del servicio, no del pod
+    hostname: customers-service  # Asegúrate de que se use el nombre del servicio
   client:
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/

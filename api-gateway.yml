@@ -4,37 +4,37 @@ spring:
   config:
     import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
   cloud:
-    gateway:
+    # Configuración para Zuul
+    zuul:
+      prefix: /api
+      ignoredServices: '*'  # Ignorar servicios no registrados explícitamente
       routes:
-        - id: vets-service
-          uri: lb://vets-service
-          predicates:
-            - Path=/api/vet/**
-          filters:
-            - StripPrefix=2
-        - id: visits-service
-          uri: lb://visits-service
-          predicates:
-            - Path=/api/visit/**
-          filters:
-            - StripPrefix=2
-        - id: customers-service
-          uri: lb://customers-service
-          predicates:
-            - Path=/api/customer/**
-          filters:
-            - StripPrefix=2
+        vets-service:
+          path: /vet/**
+          serviceId: vets-service  # Asegúrate de que coincida con el nombre registrado en Eureka
+        visits-service:
+          path: /visit/**
+          serviceId: visits-service
+        customers-service:
+          path: /customer/**
+          serviceId: customers-service
 
 server:
-  port: 8080  # Asegúrate de que el puerto del servidor sea el estándar para microservicios
+  port: 8080  # Puerto estándar del microservicio, mantén el NodePort separado en las configuraciones de Kubernetes
+  compression:
+    enabled: true
+    mime-types: application/json,text/css,application/javascript
+    min-response-size: 2048
 
-# Internationalization
+# Internacionalización
 spring.messages.basename: messages/messages
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery-server:8761/eureka/
+      defaultZone: http://discovery-server:8761/eureka/  # URL del servidor Eureka
+    registerWithEureka: true  # Asegura que el api-gateway se registre con Eureka
+    fetchRegistry: true  # Para que Zuul obtenga los servicios registrados en Eureka
 
 management:
   endpoints:
@@ -48,32 +48,22 @@ spring:
   config:
     activate:
       on-profile: docker
-  cloud:
-    gateway:
-      routes:
-        - id: vets-service
-          uri: lb://vets-service
-          predicates:
-            - Path=/api/vet/**
-          filters:
-            - StripPrefix=2
-        - id: visits-service
-          uri: lb://visits-service
-          predicates:
-            - Path=/api/visit/**
-          filters:
-            - StripPrefix=2
-        - id: customers-service
-          uri: lb://customers-service
-          predicates:
-            - Path=/api/customer/**
-          filters:
-            - StripPrefix=2
   zipkin:
-    baseUrl: http://tracing-server:9411
+    baseUrl: http://tracing-server:9411  # Para la configuración de trazas con Zipkin
   eureka:
     client:
       serviceUrl:
         defaultZone: http://discovery-server:8761/eureka/
     instance:
-      preferIpAddress: false
+      preferIpAddress: false  # Ajusta según la necesidad de registrar con IPs o nombres de host
+
+logging:
+  level:
+    org.springframework.cloud.netflix.zuul: DEBUG  # Nivel de log para Zuul para más visibilidad de errores
+
+# Actuadores para gestión y monitoreo
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

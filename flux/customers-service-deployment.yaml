@@ -14,7 +14,7 @@ spec:
         app: customers-service
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.admin-server: "customers-service-policy"
+        fluxcd.io/image-ref.admin-server: "customers-policy"
     spec:
       containers:
         - name: customers-service

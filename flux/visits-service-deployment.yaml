@@ -14,7 +14,7 @@ spec:
         app: visits-service
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.admin-server: "visits-service-policy"
+        fluxcd.io/image-ref.admin-server: "visits-policy"
     spec:
       containers:
         - name: visits-service

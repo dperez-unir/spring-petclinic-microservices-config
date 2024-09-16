@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: visits-service
-  labels:
-    app: visits-service
 spec:
   replicas: 1
   selector:
@@ -16,6 +14,26 @@ spec:
     spec:
       containers:
         - name: visits-service
-          image: docker.io/davidunir945/spring-petclinic-visits-test
+          image: davidunir945/spring-petclinic-visits-test
           ports:
-            - containerPort: 8080
+            - containerPort: 8082
+          env:
+            - name: CONFIG_SERVER_URL
+              value: "http://config-server:8888"
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: "http://discovery-server:8761/eureka/"
+          resources:
+            limits:
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: visits-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8082
+      targetPort: 8082
+  selector:
+    app: visits-service

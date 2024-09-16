@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: api-gateway
+      annotations:
+        fluxcd.io/automated: "true"
+        fluxcd.io/image-ref.admin-server: "api-gateway-policy"
     spec:
       containers:
         - name: api-gateway

@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: discovery-server
+      annotations:
+        fluxcd.io/automated: "true"
+        fluxcd.io/image-ref.admin-server: "discovery-server-policy"
     spec:
       containers:
         - name: discovery-server

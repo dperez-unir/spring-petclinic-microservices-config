@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: visits-service
+      annotations:
+        fluxcd.io/automated: "true"
+        fluxcd.io/image-ref.admin-server: "visits-service-policy"
     spec:
       containers:
         - name: visits-service

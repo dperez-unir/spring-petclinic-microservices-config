@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: admin-server
+      annotations:
+        fluxcd.io/automated: "true"
+        fluxcd.io/image-ref.admin-server: "admin-server-policy"
     spec:
       containers:
         - name: admin-server

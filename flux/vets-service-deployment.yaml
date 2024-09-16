@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: vets-service
+      annotations:
+        fluxcd.io/automated: "true"
+        fluxcd.io/image-ref.admin-server: "vets-service-policy"
     spec:
       containers:
         - name: vets-service

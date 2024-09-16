@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: admin-server
-  namespace: flux-system  # Añadir el namespace aquí
+  namespace: default
 spec:
   replicas: 1
   selector:

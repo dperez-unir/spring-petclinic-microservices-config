@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: visits-service
-  namespace: flux-system  # Añadir el namespace aquí
+  namespace: default
 spec:
   replicas: 1
   selector:

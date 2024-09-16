@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: customers-service
+  namespace: flux-system  # Añadir el namespace aquí
 spec:
   replicas: 1
   selector:

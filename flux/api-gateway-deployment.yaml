@@ -19,11 +19,11 @@ spec:
         app: api-gateway
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.admin-server: "api-gateway-policy"
+        fluxcd.io/image-ref.api-gateway: "api-gateway-policy"
     spec:
       containers:
         - name: api-gateway
-          image: davidunir945/spring-petclinic-api-gateway-test
+          image: davidunir945/spring-petclinic-api-gateway-test:3.2.10
           ports:
             - containerPort: 8080
           env:

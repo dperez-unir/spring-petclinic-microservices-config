@@ -19,11 +19,11 @@ spec:
         app: config-server
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.admin-server: "config-server-policy"
+        fluxcd.io/image-ref.config-server: "config-server-policy"
     spec:
       containers:
         - name: config-server
-          image: davidunir945/spring-petclinic-config-server-test
+          image: davidunir945/spring-petclinic-config-server-test:3.2.10
           ports:
             - containerPort: 8888
           env:

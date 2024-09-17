@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: admin-server-images
@@ -7,7 +7,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-admin-server-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: api-gateway-images
@@ -16,7 +16,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-api-gateway-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: config-server-images
@@ -25,7 +25,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-config-server-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: customers-service-images
@@ -34,7 +34,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-customers-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: discovery-server-images
@@ -43,7 +43,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-discovery-server-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: vets-service-images
@@ -52,7 +52,7 @@ spec:
   image: docker.io/davidunir945/spring-petclinic-vets-test
   interval: 1m
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: visits-service-images

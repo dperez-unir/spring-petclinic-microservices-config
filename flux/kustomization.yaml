@@ -1,4 +1,4 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: petclinic-kustomization
@@ -10,6 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: spring-petclinic-config
-  wait: true
+#  wait: true
 #  dependsOn:
 #    - name: petclinic-automation

@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: spring-petclinic-config
   update:
-    path: ./flux  # Ajusta esta ruta al lugar correcto dentro de tu repo2
+    path: ./flux/
     strategy: Setters
   git:
     checkout:

@@ -10,3 +10,4 @@ spec:
     branch: main
   secretRef:
     name: flux-git-auth
+  path: ./flux/

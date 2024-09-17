@@ -11,3 +11,5 @@ spec:
     kind: GitRepository
     name: spring-petclinic-config
   wait: true
+  dependsOn:
+    - name: petclinic-automation

@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: davidunir945/spring-petclinic-config-server-test
+          image: davidunir945/spring-petclinic-config-server-test:3.2.12
           ports:
             - containerPort: 8888
           env:

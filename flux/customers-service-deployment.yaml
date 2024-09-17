@@ -19,11 +19,11 @@ spec:
         app: customers-service
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.customers-service: "customers-policy"
+        fluxcd.io/image-ref.customers-service: "customers-service-policy"
     spec:
       containers:
         - name: customers-service
-          image: davidunir945/spring-petclinic-customers-test
+          image: davidunir945/spring-petclinic-customers-test:3.2.12
           ports:
             - containerPort: 8081
           env:

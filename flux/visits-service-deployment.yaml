@@ -19,11 +19,11 @@ spec:
         app: visits-service
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.visits-service: "visits-policy"
+        fluxcd.io/image-ref.visits-service: "visits-service-policy"
     spec:
       containers:
         - name: visits-service
-          image: davidunir945/spring-petclinic-visits-test
+          image: davidunir945/spring-petclinic-visits-test:3.2.12
           ports:
             - containerPort: 8082
           env:

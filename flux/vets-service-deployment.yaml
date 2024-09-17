@@ -19,11 +19,11 @@ spec:
         app: vets-service
       annotations:
         fluxcd.io/automated: "true"
-        fluxcd.io/image-ref.vets-service: "vets-policy"
+        fluxcd.io/image-ref.vets-service: "vets-service-policy"
     spec:
       containers:
         - name: vets-service
-          image: davidunir945/spring-petclinic-vets-test
+          image: davidunir945/spring-petclinic-vets-test:3.2.12
           ports:
             - containerPort: 8083
           env:

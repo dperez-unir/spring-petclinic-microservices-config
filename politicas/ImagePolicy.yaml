@@ -1,4 +1,4 @@
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: admin-server-policy
@@ -12,7 +12,7 @@ spec:
   dependsOn:
     - name: admin-server-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: api-gateway-policy
@@ -26,7 +26,7 @@ spec:
   dependsOn:
     - name: api-gateway-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: config-server-policy
@@ -40,7 +40,7 @@ spec:
   dependsOn:
     - name: config-server-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: customers-service-policy
@@ -54,7 +54,7 @@ spec:
   dependsOn:
     - name: customers-service-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: discovery-server-policy
@@ -68,7 +68,7 @@ spec:
   dependsOn:
     - name: discovery-server-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: vets-service-policy
@@ -82,7 +82,7 @@ spec:
   dependsOn:
     - name: vets-service-images
 ---
-apiVersion: image.toolkit.fluxcd.io/v1alpha2
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: visits-service-policy

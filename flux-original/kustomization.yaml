@@ -4,12 +4,11 @@ metadata:
   name: petclinic-kustomization
   namespace: flux-system
 spec:
-  interval: 1m
+  force: true
+  interval: 1m0s
   path: ./flux/
   prune: true
   sourceRef:
     kind: GitRepository
     name: spring-petclinic-config
-#  wait: true
-#  dependsOn:
-#    - name: petclinic-automation
+  wait: true
